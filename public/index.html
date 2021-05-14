@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>App</title>
+  </head>
+
+  <body>
+    <main>
+      <!-- News -->
+      <section x-data="news()" x-init="getNews()">
+        <div>
+          <div>
+            <button x-bind:class="{ 'active': layout === 'grid' }" @click="setLayout('grid')">
+              Grid
+            </button>
+            <button x-bind:class="{ 'active': layout === 'list' }" @click="setLayout('list')">
+              List
+            </button>
+          </div>
+
+          <div>
+            <p>Show by</p>
+
+            <div>
+              <template x-for="item in [8, 12, 24]" :key="item">
+                <button
+                  x-bind:class="{ 'active': size === item }"
+                  @click="setSize(item)"
+                  x-text="item"
+                ></button>
+              </template>
+            </div>
+          </div>
+        </div>
+
+        <div x-bind:class="layout">
+          <template x-for="({ title, time, name, id }) in activeNews" :key="id">
+            <div>
+              <p x-text="title"></p>
+              <p x-text="time"></p>
+              <p x-text="name"></p>
+            </div>
+          </template>
+        </div>
+
+        <div>
+          <template x-for="(_, i) in pagination" :key="i">
+            <button
+              x-bind:class="{ 'active': page === i + 1 }"
+              @click="setPage(i + 1)"
+              x-text="i + 1"
+            ></button>
+          </template>
+        </div>
+      </section>
+      <!-- News -->
+    </main>
+
+    <noscript>You need to enable JavaScript to run this app</noscript>
+
+    <script type="module" src="/dist/index.js"></script>
+  </body>
+</html>
