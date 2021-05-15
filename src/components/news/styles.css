@@ -1,3 +1,37 @@
-.alert {
-  @apply bg-red-500;
+.news {
+  @apply flex flex-col w-6/12 p-6 mx-auto;
+}
+
+.news button {
+  @apply bg-gray-300 hover:bg-gray-400 text-white font-bold py-1 px-3 rounded;
+}
+
+.news button.active {
+  @apply bg-gray-500;
+}
+
+.news .settings {
+  @apply mb-6 flex justify-between;
+}
+
+.news .settings .size {
+  @apply flex items-center;
+}
+
+.news .settings .size .list {
+  @apply ml-4;
+}
+
+.news .content.grid-view {
+  @apply grid grid-cols-2 gap-x-2;
+}
+
+.news .news-item {
+  @apply bg-white rounded-xl shadow-md mt-2 mb-2 p-3;
+
+  border: 1px solid #e5e7eb;
+}
+
+.news .pagination {
+  @apply mt-6;
 }

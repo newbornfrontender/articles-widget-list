@@ -3,8 +3,12 @@ import { chunk } from 'loadsh';
 import { get } from '../../utils/api';
 import './styles.css';
 
-export function news() {
+function news() {
   return {
+    initNews() {
+      this.getNews();
+    },
+
     layout: 'grid',
     setLayout(layout) {
       this.layout = layout;
@@ -55,3 +59,5 @@ export function news() {
     },
   };
 }
+
+window.news = news;
